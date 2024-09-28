@@ -1,0 +1,140 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Thêm TK
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Thêm Tài Khoản</strong>
+        </div>
+    </div>
+    <form action="ThemTK" method="post">
+        {% csrf_token %}
+        <div class="card-body p-3 bg-white">
+            <div class="form-horizontal">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Tên Tài Khoản</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.NameAc.name }}"  class="form-control">
+                                </div>
+                            </div>
+                            {{ form.NameAc.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Email</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.Email.name }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.Email.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Phone</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.Phone.name }}"  class="form-control">
+                                </div>
+                                {{ form.Phone.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Username</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.Username.name }}"  class="form-control">
+                                </div>
+                            </div>
+                            {{ form.Username.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Hình Ảnh</label>
+                                <div class="col-md-5">
+                                    <input type="file" name="{{ form.Avatar.name }}" class="form-control" style="background-color:white" />
+                                </div>
+                            </div>
+                            {{ form.Avatar.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Password</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="{{ form.Pass.name }}" style="color: black; background-color: white;"></textarea>
+                                </div>
+                            </div>
+                            {{ form.Pass.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Ngày Sinh</label>
+                                <div class="col-md-5">
+                                    <input type="date" id="product-name" name="{{ form.NgaySinh.name }}"  class="form-control">
+                                </div>
+                            </div>
+                            {{ form.NgaySinh.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Địa Chỉ</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.DiaChi.name }}"  class="form-control">
+                                </div>
+                            </div>
+                            {{ form.DiaChi.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="gender" class="col-md-2 col-form-label">Giới Tính</label>
+                                <div class="col-md-5">
+                                    <select id="gender" name="{{ form.GioiTinh.name }}" class="form-select">
+                                        <option value="Nam" {% if form.instance.GioiTinh == 'Nam' %} selected {% endif %}>Nam</option>
+                                        <option value="Nữ" {% if form.instance.GioiTinh == 'Nữ' %} selected {% endif %}>Nữ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            {{ form.GioiTinh.errors }}
+                        </div>                        
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Salt</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.Salt.name }}"  class="form-control">
+                                </div>
+                            </div>
+                            {{ form.Salt.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Role</label>
+                                <div class="col-md-5">
+                                    <select class="form-select" aria-label="Default select example" name="{{ form.RoleID.name }}" id="id_MaLoaiSP">
+                                        <option selected>Open this select menu</option>
+                                        {% for role in role_list %}
+                                            <option value="{{ role.RoleID }}">{{ role.RoleName }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            {{ form.RoleID.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" style="background-color:black;color: white;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

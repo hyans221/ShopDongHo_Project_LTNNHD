@@ -1,0 +1,56 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Chi Tiết Đơn Hàng
+{% endblock %}
+{% load custom_filters  %}
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Chi Tiết Đơn Hàng</strong>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <div class="card-body p-3 bg-white">
+            <table class="table">
+                <tr>
+                    <th>Mã Đơn Hàng</th>
+                    <td>{{ dh.MaDon }}</td>
+                </tr>
+                <tr>
+                    <th>Khách Hàng</th>
+                    <td>{{ dh.IDAC.NameAc }}</td>
+                </tr>
+                <tr>
+                    <th>Số Điện Thoại</th>
+                    <td>{{ dh.SDT }}</td>
+                </tr>
+                <tr>
+                    <th>Tổng Tiền</th>
+                    <td>{{ dh.TongTien }}</td>
+                </tr>
+                <tr>
+                    <th>Ngày Đặt</th>
+                    <td>{{ dh.NgayDat }}</td>
+                </tr>
+                <tr>
+                    <th>Ngày Giao</th>
+                    <td>{{ dh.NgayGiao }}</td>
+                </tr>
+                <tr>
+                    <th>Trạng Thái Giao Hàng</th>
+                    <td>{{ dh.TransactStatusID.Status }}</td>
+                </tr>
+                <tr>
+                    <th>Địa Chỉ</th>
+                    <td>{{ dh.DiaChi }}</td>
+                </tr>
+            </table>
+            <p>
+                <button type="button" class="btn btn-info"><a href="{% url 'admincustom:SuaDH' MaDon=dh.MaDon %}" style="color: white;text-decoration: none;">Edit</a></button>
+                <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_dh'%}" style="color: white;text-decoration: none;">Back</a></button>
+            </p>
+        </div>
+    </div>  
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "page/layout_admin.html" %}
+{% block title %}
+    Thêm Menu
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Thêm Menu</strong>
+        </div>
+    </div>
+    <form action="ThemMenu" method="post">
+        {% csrf_token %}
+        <div class="card-body p-3 bg-white">
+            <div class="form-horizontal">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Mã Menu</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.MaMenu.name }}"  class="form-control">
+                                </div>
+                            </div>
+                            {{ form.MaMenu.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Tên Menu</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.TenMenu.name }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.TenMenu.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" style="background-color:black;color: white;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

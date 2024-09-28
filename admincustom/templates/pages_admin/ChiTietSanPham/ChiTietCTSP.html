@@ -1,0 +1,96 @@
+{% extends "page/layout_admin.html" %}
+{% block title %}
+    Chi Tiết Sản Phẩm
+{% endblock %}
+{% load custom_filters  %}
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Chi Tiết Chi Tiết Sản Phẩm</strong>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <div class="card-body p-3 bg-white">
+            <table class="table">
+                <tr>
+                    <th>
+                        Mã Chi Tiết SP
+                    </th>
+                    <td>
+                        {{ ctsp.MaChiTietSP }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Mã Sản Phẩm
+                    </th>
+                    <td>
+                        {{ ctsp.MaSP.TenSP }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Mã Thương Hiệu
+                    </th>
+                    <td>
+                        {{ ctsp.MaThuongHieu.TenThuongHieu }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Xuất Xứ
+                    </th>
+                    <td>
+                        {{ ctsp.XuatXu }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Dòng Máy
+                    </th>
+                    <td>
+                        {{ ctsp.DongMay }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Chất Liệu
+                    </th>
+                    <td>
+                        {{ ctsp.ChatLieu }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Phong Cách
+                    </th>
+                    <td>
+                        {{ ctsp.PhongCach }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Đối Tượng
+                    </th>
+                    <td>
+                        {{ ctsp.DoiTuong }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Mã Danh Mục
+                    </th>
+                    <td>
+                        {{ ctsp.MaDanhMuc.TenDanhMuc }}
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <button type="button" class="btn btn-info"><a href="{% url 'admincustom:SuaCTSP' MaChiTietSP=ctsp.MaChiTietSP %}" style="color: white;text-decoration: none;">Edit</a></button>
+                <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_ctsp'%}" style="color: white;text-decoration: none;">Back</a></button>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

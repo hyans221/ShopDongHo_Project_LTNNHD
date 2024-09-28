@@ -1,0 +1,138 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Sửa Tài Khoản
+{% endblock %}
+
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Sửa Tài Khoản</strong>
+        </div>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card-body p-3 bg-white">
+            <div class="form-horizontal">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <div class="col-md-5">
+                                    <input type="hidden" id="account-id" name="IDAC" value="{{ form.IDAC.value }}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-name">Tên Tài Khoản</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="account-name" name="NameAc" value="{{ form.NameAc.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.NameAc.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-email">Email</label>
+                                <div class="col-md-5">
+                                    <input type="email" id="account-email" name="Email" value="{{ form.Email.value }}" class="form-control">
+                                </div>
+                                {{ form.Email.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-phone">Số Điện Thoại</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="account-phone" name="Phone" value="{{ form.Phone.value }}" class="form-control">
+                                </div>
+                                {{ form.Phone.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-username">Username</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="account-username" name="Username" value="{{ form.Username.value }}" class="form-control">
+                                </div>
+                                {{ form.Username.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-password">Password</label>
+                                <div class="col-md-5">
+                                    <input type="password" id="account-password" name="Pass" value="{{ form.Pass.value }}" class="form-control">
+                                </div>
+                                {{ form.Pass.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-avatar">Avatar</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="account-avatar" value="{{ form.Avatar.value }}" name="Avatar" class="form-control">
+                                </div>
+                                {{ form.Avatar.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-birth">Ngày Sinh</label>
+                                <div class="col-md-5">
+                                    <input type="date" id="account-birth" name="NgaySinh" value="{{ form.NgaySinh.value }}" class="form-control">
+                                </div>
+                                {{ form.NgaySinh.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-address">Địa Chỉ</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="account-address" name="DiaChi" value="{{ form.DiaChi.value }}" class="form-control">
+                                </div>
+                                {{ form.DiaChi.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-gender">Giới Tính</label>
+                                <div class="col-md-5">
+                                    <select id="account-gender" name="GioiTinh" class="form-select">
+                                        <option value="Nam" {% if form.instance.GioiTinh == 'Nam' %} selected {% endif %}>Nam</option>
+                                        <option value="Nữ" {% if form.instance.GioiTinh == 'Nữ' %} selected {% endif %}>Nữ</option>
+                                    </select>
+                                </div>
+                                {{ form.GioiTinh.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="account-role">Vai Trò</label>
+                                <div class="col-md-5">
+                                    <select id="account-role" name="RoleID" class="form-select">
+                                        {% for role in role_list %}
+                                            <option value="{{ role.RoleID }}" {% if form.instance.RoleID.RoleID == role.RoleID %} selected {% endif %}>{{ role.RoleName }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                {{ form.RoleID.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" value="Update" class="btn btn-default" style="background-color:black;color: white;">Sửa</button>
+                                    <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_tk'%}" style="color: white;text-decoration: none;">Back</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

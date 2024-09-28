@@ -1,0 +1,54 @@
+{% extends "page/layout_admin.html" %}
+{% block title %}
+    Thêm thsp
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Thêm thsp</strong>
+        </div>
+    </div>
+    <form action="ThemTHSP" method="post">
+        {% csrf_token %}
+        <div class="card-body p-3 bg-white">
+            <div class="form-horizontal">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Tên Thương Hiệu</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="{{ form.TenThuongHieu.name }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.TenThuongHieu.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Tên Danh Mục</label>
+                                <select class="form-select" aria-label="Default select example" name="{{ form.MaDanhMuc.name }}" id="id_MaLoaiSP">
+                                    <option selected>Open this select menu</option>
+                                    {% for ma_dm in ma_dm_list %}
+                                        <option value="{{ ma_dm.MaDanhMuc }}">{{ ma_dm.TenDanhMuc }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            {{ form.MaDanhMuc.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" style="background-color:black;color: white;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "page/layout_admin.html" %}
+{% block title %}
+    Chi Tiết Menu
+{% endblock %}
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Chi Tiết Menu</strong>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <table class="table">
+            <tr>
+                <th>Mã Menu</th>
+                <td>{{ menu.MaMenu }}</td>
+            </tr>
+            <tr>
+                <th>Tên Menu</th>
+                <td>{{ menu.TenMenu }}</td>
+            </tr>
+            <tr>
+                <th>Mô Tả</th>
+                <td>{{ menu.MoTa }}</td>
+            </tr>
+            <tr>
+                <th>Ảnh Đại Diện</th>
+                <td><img src="{{ menu.AnhDaiDien.url }}" alt="Ảnh Đại Diện" style="width: 100px; height: 100px;"></td>
+            </tr>
+        </table>
+        <p>
+            <button type="button" class="btn btn-info"><a href="{% url 'admincustom:SuaMenu' MaMenu=menu.MaMenu %}" style="color: white;text-decoration: none;">Chỉnh Sửa</a></button>
+            <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_menu' %}" style="color: white;text-decoration: none;">Quay Lại</a></button>
+        </p>
+    </div>
+</div>
+{% endblock %}

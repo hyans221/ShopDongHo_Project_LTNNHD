@@ -1,0 +1,131 @@
+{% extends "page/layout_admin.html" %}
+{% block title %}
+    Sửa Chi Tiết Sản Phẩm
+{% endblock %}
+
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Sửa Chi Tiết Sản Phẩm</strong>
+        </div>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card-body p-3 bg-white">
+            <div class="form-horizontal">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <div class="col-md-5">
+                                    <input type="hidden" id="product-name" name="MaChiTietSP" value="{{ form.MaChiTietSP.value }}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="MaSP" class="col-md-2 control-label">Mã Sản Phẩm</label>
+                                <div class="col-md-10">
+                                    <select class="form-select" name="MaSP" id="MaSP">
+                                        {% for sp in ma_sp_list %}
+                                            <option value="{{ sp.MaSP }}">{{ sp.TenSP }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="MaThuongHieu" class="col-md-2 control-label">Tên Thương Hiệu</label>
+                                <div class="col-md-10">
+                                    <select class="form-select" name="MaThuongHieu" id="MaThuongHieu">
+                                        {% for th in ma_thsp_list %}
+                                            <option value="{{ th.MaThuongHieu }}">{{ th.TenThuongHieu }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="XuatXu" class="col-md-2 control-label">Xuất Xứ</label>
+                                <div class="col-md-10">
+                                    <input type="text" id="XuatXu" name="XuatXu" value="{{ form.XuatXu.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.XuatXu.errors }}
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="DongMay" class="col-md-2 control-label">Dòng Máy</label>
+                                <div class="col-md-10">
+                                    <input type="text" id="DongMay" name="DongMay" value="{{ form.DongMay.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.DongMay.errors }}
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="ChatLieu" class="col-md-2 control-label">Chất Liệu</label>
+                                <div class="col-md-10">
+                                    <input type="text" id="ChatLieu" name="ChatLieu" value="{{ form.ChatLieu.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.ChatLieu.errors }}
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="PhongCach" class="col-md-2 control-label">Phong Cách</label>
+                                <div class="col-md-10">
+                                    <input type="text" id="PhongCach" name="PhongCach" value="{{ form.PhongCach.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.PhongCach.errors }}
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="DoiTuong" class="col-md-2 control-label">Đối Tượng</label>
+                                <div class="col-md-10">
+                                    <input type="text" id="DoiTuong" name="DoiTuong" value="{{ form.DoiTuong.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.DoiTuong.errors }}
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="MaDanhMuc" class="col-md-2 control-label">Mã Danh Mục</label>
+                                <div class="col-md-10">
+                                    <select class="form-select" id="MaDanhMuc" name="MaDanhMuc">
+                                        {% for dm in ma_dm_list %}
+                                        <option value="{{ dm.MaDanhMuc }}">{{ dm.TenDanhMuc }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            {{ form.MaDanhMuc.errors }}
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" value="Update" class="btn btn-default">Sửa</button>
+                                    <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_ctsp'%}" style="color: white;text-decoration: none;">Back</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

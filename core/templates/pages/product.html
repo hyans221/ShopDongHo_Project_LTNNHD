@@ -1,0 +1,187 @@
+{% extends "page/layout.html" %}
+{% block title %}
+{{ product.MaSP }}
+{% endblock %}
+{% block container %}
+{% load static %}
+{% load cart %}
+<div class="wrapper-product">
+    <div class="container" style="max-width: 1200px;">
+        <div class="next-prev-group">
+            <div class="breadcrumb">
+                <a href="/" data-translate="general.breadcrumbs.home">Trang chủ</a>
+                <span class="arrow">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </span>
+                <span><a href="/collections/nam" title="">Đồng Hồ Nam</a></span>
+                <span class="arrow">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </span>
+                <span>{{ product.TenSP }}</span>
+            </div>
+        </div>
+        <div class="product-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="thumb filter-olym-pianus-op990-134agsk-t-nam slick-slide slick-current slick-active"
+                        data-slick-index="0" aria-hidden="false"
+                        style="width: 570px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;"
+                        tabindex="-1" role="option" aria-describedby="slick-slide00">
+                        <a class="fancybox" rel="gallery1">
+                            <img src="/media/uploads/{{ product.HinhAnh }}" height="600px" width="590px" >
+                        </a>
+                    </div>
+                </div>
+                {% for detail in product_details %}
+                <div class="col-md-6 product-shop">
+                    <div class="product-title">
+                        <span>{{ product.TenSP }}</span>
+                    </div>
+                    <div class="product-infor">
+                        <div class="vendor-product">
+                            <label>Hãng:</label>
+                            {% for brand in thuonghieu %}
+                            <span><a href="/collections/vendors?q=Olym%20Pianus" title="Olym Pianus">{{brand}}</a></span>
+                            {% endfor %}
+                        </div>
+                        <div class="sku-product">
+                            <label>SKU:</label><span> {{ product.MaSP }}</span>
+                        </div>
+                        <div class="product-inventory">
+                            <label>Tình trạng:</label>
+                            <span>{{ product.TrangThai }}</span>
+                        </div>
+                        <div class="product-type">
+                            <label>Giới tính:</label>
+                            <span>{{ detail.DoiTuong }}</span>
+                        </div>
+                    </div>
+                    <div class="product-prices">
+                        {% load custom_filters %}
+                        <span class="compare-price">{{product.GiaBan|format_vnd}}</span>
+                        <span class="price on-sale" itemprop="price">{{product.GiaGiam|format_vnd}}</span>
+                    </div>
+                    <form method="post" action="{% url 'add_to_cart' product.MaSP %}" accept-charset="UTF-8"
+                        enctype="multipart/form-data" novalidate="novalidate">
+                        {% csrf_token %}
+                        <div class="quantity">
+                            <label for="quantity">Số lượng:</label>
+                            <div class="qty-group">
+                                <input type="number" name="num" value="1" inputmode="numeric" pattern="[0-9]*">
+                            </div>
+                        </div>
+                        <div class="groups-btn">
+                            <div class="groups-btn-tree">
+                                <input data-btn-addtocart="" type="submit" class="btn" id="product-add-to-cart"
+                                    value="Thêm vào giỏ" data-form-id="#add-to-cart-form">
+                            </div>
+                        </div>
+                    </form>
+                    <form>
+                        <div data-shopify="payment-button" data-has-selling-plan="false"
+                            data-has-fixed-selling-plan="false" data-customer-accounts-required="false"
+                            class="shopify-payment-button">
+                            <div>
+                                <div>
+                                    <div>
+                                        <button type="button" class="btn-payment" data-testid="Checkout-button">Mua
+                                            ngay</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="product-bottom">
+            <div class="tab-product">
+                <ul class="list-tabs">
+                    <li class="tab-title">
+                        <a href="#" class="tab-links active">
+                            <span>Mô tả sản phẩm</span>
+                        </a>
+                    </li>
+                    <li class="tab-title">
+                        <a href="#" class="tab-links active">
+                            <span>Đánh giá của khách hàng</span>
+                        </a>
+                    </li>
+                    <li class="tab-title">
+                        <a href="#" class="tab-links active">
+                            <span>Chính sách bảo hành</span>
+                        </a>
+                    </li>
+                    <li class="tab-title">
+                        <a href="#" class="tab-links active">
+                            <span>Chính sách đổi trả</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="wrapper-tab-content">
+                <div class="tab-content active" data-tabcontent="" id="collapse-tab1">
+                    <div class="rte">
+                        <h3>THÔNG SỐ SẢN PHẨM</h3>
+                        <div class="table-wrapper">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>MÀU MẶT SỐ</th>
+                                        <td>Đen</td>
+                                    </tr>
+                                    <tr>
+                                        <th>BẢO HÀNH CHÍNH HÃNG</th>
+                                        <td>Quốc Tế 2 Năm</td>
+                                    </tr>
+                                    <tr>
+                                        <th>CHỐNG NƯỚC</th>
+                                        <td>5 ATM (50m)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>MÀU DÂY</th>
+                                        <td>Nâu</td>
+                                    </tr>
+                                    <tr>
+                                        <th>DẠNG MẶT SỐ</th>
+                                        <td>Tròn</td>
+                                    </tr>
+                                    <tr>
+                                        <th>GIỚI TÍNH</th>
+                                        <td>Nam</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LOẠI DÂY</th>
+                                        <td>Dây Da</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LOẠI KÍNH</th>
+                                        <td>Mineral Crystal (Kính Cứng)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LOẠI MÁY</th>
+                                        <td>Pin (Quartz)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>SIZE MẶT SỐ</th>
+                                        <td>41 mm</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HÃNG</th>
+                                        <td>MVMT</td>
+                                    </tr>
+                                    <tr>
+                                        <th>THƯƠNG HIỆU</th>
+                                        <td>Mỹ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

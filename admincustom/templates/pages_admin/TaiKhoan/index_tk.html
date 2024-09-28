@@ -1,0 +1,58 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Danh Sách Tài Khoản
+{% endblock %}
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">DANH SÁCH TÀI KHOẢN</strong>
+        </div>
+        <div class="col-md-12 text-end">
+            <a href="/admincustom/TaiKhoan/ThemTK" class="btn btn-sm btn-success ">Thêm</a>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th style="width:20px" class="text-center">#</th>
+                    <th style="width:20px" class="text-center">ID</th>
+                    <th style="width:90px" class="text-center">Tên Tài Khoản</th>
+                    <th style="width:40px" class="text-center">Email</th>
+                    <th style="width:60px" class="text-center">Số Điện Thoại</th>
+                    <th style="width:60px" class="text-center">Địa Chỉ</th>
+                    <th style="width:60px" class="text-center">Giới Tính</th>
+                    <th style="width:60px" class="text-center">Quyền Hạn</th>
+                    <th style="width:60px" class="text-center">Avatar</th>
+                    <th style="width:60px" class="text-center">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tai_khoan in list_tk %}
+                <tr>
+                    <td class="text-center">{{ forloop.counter }}</td>
+                    <td class="text-center">{{ tai_khoan.IDAC }}</td>
+                    <td class="text-center">{{ tai_khoan.NameAc }}</td>
+                    <td class="text-center">{{ tai_khoan.Email }}</td>
+                    <td class="text-center">{{ tai_khoan.Phone }}</td>
+                    <td class="text-center">{{ tai_khoan.DiaChi }}</td>
+                    <td class="text-center">{{ tai_khoan.GioiTinh }}</td>
+                    <td class="text-center">{{ tai_khoan.RoleID }}</td>
+                    <td class="text-center"><img src="{{ tai_khoan.Avatar.url }}" alt="Avatar" style="width: 50px; height: 50px;"></td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a href="{% url 'admincustom:SuaTK' IDAC=tai_khoan.IDAC %}" class="btn btn-sm btn-success">Edit</a>
+                            <a href="{% url 'admincustom:XoaTK' IDAC=tai_khoan.IDAC %}" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{% url 'admincustom:ChiTietTK' IDAC=tai_khoan.IDAC %}" class="btn btn-sm btn-success">View</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% comment %} Không xoá được admin {% endcomment %}
+{% comment %} Sửa rồi nhưng không lưu vào db {% endcomment %}

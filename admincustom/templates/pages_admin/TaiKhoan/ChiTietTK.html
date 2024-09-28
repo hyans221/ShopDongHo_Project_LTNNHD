@@ -1,0 +1,53 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Chi Tiết Tài Khoản
+{% endblock %}
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Chi Tiết Tài Khoản</strong>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <table class="table">
+            <tr>
+                <th>ID Tài Khoản</th>
+                <td>{{ tai_khoan.IDAC }}</td>
+            </tr>
+            <tr>
+                <th>Tên Tài Khoản</th>
+                <td>{{ tai_khoan.NameAc }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ tai_khoan.Email }}</td>
+            </tr>
+            <tr>
+                <th>Số Điện Thoại</th>
+                <td>{{ tai_khoan.Phone }}</td>
+            </tr>
+            <tr>
+                <th>Địa Chỉ</th>
+                <td>{{ tai_khoan.DiaChi }}</td>
+            </tr>
+            <tr>
+                <th>Giới Tính</th>
+                <td>{{ tai_khoan.GioiTinh }}</td>
+            </tr>
+            <tr>
+                <th>Avatar</th>
+                <td><img src="{{ tai_khoan.Avatar.url }}" alt="Avatar" style="width: 50px; height: 50px;"></td>
+            </tr>
+            <tr>
+                <th>Quyền Hạn</th>
+                <td>{{ tai_khoan.RoleID }}</td>
+            </tr>
+        </table>
+        <p>
+            <button type="button" class="btn btn-info"><a href="{% url 'admincustom:SuaTK' IDAC=tai_khoan.IDAC %}" style="color: white;text-decoration: none;">Edit</a></button>
+            <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_tk'%}" style="color: white;text-decoration: none;">Back</a></button>
+        </p>
+    </div>
+</div>
+{% endblock %}

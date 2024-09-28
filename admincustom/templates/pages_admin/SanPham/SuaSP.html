@@ -1,0 +1,125 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Sửa SP
+{% endblock %}
+
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Sửa Sản Phẩm</strong>
+        </div>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card-body p-3 bg-white">
+            <div class="form-horizontal">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <input type="hidden" id="product-name" name="MaSP" value="{{ form.MaSP.value }}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Tên Sản Phẩm</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="TenSP" value="{{ form.TenSP.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.TenSP.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Số Lượng</label>
+                                <div class="col-md-5">
+                                    <input type="number" id="product-name" name="SoLuong" value="{{ form.SoLuong.value }}" class="form-control">
+                                </div>
+                                {{ form.SoLuong.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <!-- <label for="product-name">Người Tạo</label> -->
+                                <div class="col-md-5">
+                                    <input type="hidden" id="product-name" name="NguoiTao" value="{{ form.NguoiTao.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.NguoiTao.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Hình Ảnh</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" value="{{ form.HinhAnh.value }}" name="{{ form.HinhAnh.name }}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Mô Tả</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="MoTa" value="{{ form.MoTa.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.MoTa.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Giá Bán</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="GiaBan" value="{{ form.GiaBan.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.GiaBan.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Giá Giảm</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="GiaGiam" value="{{ form.GiaGiam.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.GiaGiam.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                Trạng Thái
+                                <div class="col-md-5">
+                                    <input type="text" id="product-name" name="TrangThai" value="{{ form.TrangThai.value }}" class="form-control">
+                                </div>
+                            </div>
+                            {{ form.TrangThai.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="product-name">Loại Sản Phẩm</label>
+                                <div class="col-md-5">
+                                    <select class="form-select" aria-label="Default select example" name="{{ form.MaLoaiSP.name }}" id="product-name">
+                                        <option selected>Chọn Loại Sản Phẩm</option>
+                                        {% for loai_sp in loai_sp_list %}
+                                        <option value="{{ loai_sp.MaLoaiSP }}">{{ loai_sp.TenLoaiSP }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            {{ form.MaLoaiSP.errors }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" value="Update" class="btn btn-default" style="background-color:black;color: white;">Sửa</button>
+                                    <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_sp'%}" style="color: white;text-decoration: none;">Back</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

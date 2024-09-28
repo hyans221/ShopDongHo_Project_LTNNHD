@@ -1,0 +1,58 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Sửa Phân Quyền
+{% endblock %}
+
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Sửa Phân Quyền</strong>
+        </div>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card-body p-3 bg-white">
+            <div class="form-horizontal">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <div class="col-md-5">
+                                    <input type="hidden" id="role-id" name="RoleID" value="{{ form.RoleID.value }}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="role-name">Tên Phân Quyền</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="role-name" name="RoleName" value="{{ form.RoleName.value }}" class="form-control">
+                                </div>
+                                {{ form.RoleName.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="role-description">Mô Tả</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="role-description" name="Decription" value="{{ form.Decription.value }}" class="form-control">
+                                </div>
+                                {{ form.Decription.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" value="Update" class="btn btn-default" style="background-color:black;color: white;">Sửa</button>
+                                    <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_pq'%}" style="color: white;text-decoration: none;">Back</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

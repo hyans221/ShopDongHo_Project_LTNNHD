@@ -1,0 +1,46 @@
+{% extends "page/layout_admin.html" %}
+{% block title %}
+    Danh Sách Danh Mục Sản Phẩm
+{% endblock %}
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">DANH SÁCH DANH MỤC SẢN PHẨM</strong>
+        </div>
+        <div class="col-md-12 text-end">
+            <a href="{% url 'admincustom:ThemDMSP' %}" class="btn btn-sm btn-success ">Thêm</a>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th style="width:20px" class="text-center">#</th>
+                    <th style="width:20px" class="text-center">ID</th>
+                    <th style="width:90px" class="text-center">Tên Danh Mục</th>
+                    <th style="width:60px" class="text-center">Mô Tả</th>
+                    <th style="width:60px" class="text-center">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dmsp in list_dmsp %}
+                <tr>
+                    <td class="text-center">{{ forloop.counter }}</td>
+                    <td class="text-center">{{ dmsp.MaDanhMuc }}</td>
+                    <td class="text-center">{{ dmsp.TenDanhMuc }}</td>
+                    <td class="text-center">{{ dmsp.MoTa }}</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a href="{% url 'admincustom:SuaDMSP' MaDanhMuc=dmsp.MaDanhMuc %}" class="btn btn-sm btn-success">Edit</a>
+                            <a href="{% url 'admincustom:XoaDMSP' MaDanhMuc=dmsp.MaDanhMuc %}" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{% url 'admincustom:ChiTietDMSP' MaDanhMuc=dmsp.MaDanhMuc %}" class="btn btn-sm btn-success">View</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

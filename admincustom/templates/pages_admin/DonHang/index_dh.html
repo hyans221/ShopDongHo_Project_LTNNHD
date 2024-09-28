@@ -1,0 +1,56 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Index_DonHang
+{% endblock %}
+{% load custom_filters %}
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">DANH SÁCH ĐƠN HÀNG</strong>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th style="width:20px" class="text-center">#</th>
+                    <th style="width:20px" class="text-center">Mã Đơn Hàng</th>
+                    <th style="width:90px" class="text-center">Khách Hàng</th>
+                    <th style="width:40px" class="text-center">Số Điện Thoại</th>
+                    <th style="width:60px" class="text-center">Tổng Tiền</th>
+                    <th style="width:60px" class="text-center">Ngày Đặt</th>
+                    <th style="width:60px" class="text-center">Ngày Giao</th>
+                    <th style="width:60px" class="text-center">Trạng Thái</th>
+                    <th style="width:60px" class="text-center">Địa Chỉ</th>
+                    <th style="width:60px" class="text-center">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for don_hang in list_dh %}
+                <tr>
+                    <td class="text-center">
+                        <input name="checkID" type="checkbox" />
+                    </td>
+                    <td class="text-center">{{ don_hang.MaDon }}</td>
+                    <td class="text-center">{{ don_hang.IDAC.NameAc }}</td>
+                    <td class="text-center">{{ don_hang.SDT }}</td>
+                    <td class="text-center">{{ don_hang.TongTien|format_vnd }}</td>
+                    <td class="text-center">{{ don_hang.NgayDat }}</td>
+                    <td class="text-center">{{ don_hang.NgayGiao }}</td>
+                    <td class="text-center">{{ don_hang.TransactStatusID.Status }}</td>
+                    <td class="text-center">{{ don_hang.DiaChi }}</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a href="{% url 'admincustom:SuaDH' MaDon=don_hang.MaDon %}" class="btn btn-sm btn-success">Edit</a>
+                            <a href="{% url 'admincustom:XoaDH' MaDon=don_hang.MaDon %}" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{% url 'admincustom:ChiTietDH' MaDon=don_hang.MaDon %}" class="btn btn-sm btn-success">View</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

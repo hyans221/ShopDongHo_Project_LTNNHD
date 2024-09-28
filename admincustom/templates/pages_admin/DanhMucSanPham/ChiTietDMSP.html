@@ -1,0 +1,49 @@
+{% extends "page/layout_admin.html" %}
+
+{% block title %}
+    Chi tiết danh mục sản phẩm
+{% endblock %}
+
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Chi Tiết Danh Mục Sản Phẩm</strong>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <div class="card-body p-3 bg-white">
+            <table class="table">
+                <tr>
+                    <th>
+                        Mã Danh Mục
+                    </th>
+                    <td>
+                        {{ dmsp.MaDanhMuc }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Tên Danh Mục
+                    </th>
+                    <td>
+                        {{ dmsp.TenDanhMuc }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Mô tả
+                    </th>
+                    <td>
+                        {{ dmsp.MoTa}}
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <button type="button" class="btn btn-info"><a href="{% url 'admincustom:SuaDMSP' MaDanhMuc=dmsp.MaDanhMuc %}" style="color: white;text-decoration: none;">Chỉnh sửa</a></button>
+                <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_dmsp'%}" style="color: white;text-decoration: none;">Quay lại</a></button>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

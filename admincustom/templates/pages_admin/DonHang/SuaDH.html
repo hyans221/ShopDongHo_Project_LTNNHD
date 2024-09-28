@@ -1,0 +1,119 @@
+﻿{% extends "page/layout_admin.html" %}
+{% block title %}
+    Sửa Đơn Hàng
+{% endblock %}
+
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Sửa Đơn Hàng</strong>
+        </div>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="card-body p-3 bg-white">
+            <div class="form-horizontal">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <div class="col-md-5">
+                                    <input type="hidden" id="donhang-madon" name="MaDon" value="{{ form.MaDon.value }}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="donhang-idac" class="col-md-3 col-form-label">ID Tài Khoản</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="donhang-idac" name="IDAC" value="{{ form.IDAC.value }}" class="form-control">
+                                </div>
+                                {{ form.IDAC.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="donhang-deleted" class="col-md-3 col-form-label">Trạng Thái</label>
+                                <div class="col-md-9">
+                                    <select id="donhang-deleted" name="Deleted" class="form-select">
+                                        <option value="0" {% if form.Deleted.value == '0' %} selected {% endif %}>Không huỷ</option>
+                                        <option value="1" {% if form.Deleted.value == '1' %} selected {% endif %}>Đã huỷ</option>
+                                    </select>
+                                </div>
+                                {{ form.Deleted.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="donhang-sdt" class="col-md-3 col-form-label">Số Điện Thoại</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="donhang-sdt" name="SDT" value="{{ form.SDT.value }}" class="form-control">
+                                </div>
+                                {{ form.SDT.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="donhang-tongtien" class="col-md-3 col-form-label">Tổng Tiền</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="donhang-tongtien" name="TongTien" value="{{ form.TongTien.value }}" class="form-control">
+                                </div>
+                                {{ form.TongTien.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="donhang-ngaydat" class="col-md-3 col-form-label">Ngày Đặt</label>
+                                <div class="col-md-9">
+                                    <input type="date" id="donhang-ngaydat" name="NgayDat" value="{{ form.NgayDat.value }}" class="form-control">
+                                </div>
+                                {{ form.NgayDat.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="donhang-ngaygiao" class="col-md-3 col-form-label">Ngày Giao</label>
+                                <div class="col-md-9">
+                                    <input type="date" id="donhang-ngaygiao" name="NgayGiao" value="{{ form.NgayGiao.value }}" class="form-control">
+                                </div>
+                                {{ form.NgayGiao.errors }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="donhang-transactstatusid" class="col-md-3 col-form-label">Trạng Thái Vận Chuyển</label>
+                                <div class="col-md-9">
+                                    <select id="donhang-transactstatusid" name="TransactStatusID" class="form-select">
+                                        <option value="0" {% if form.TransactStatusID.value == '0' %} selected {% endif %}>Đang giao</option>
+                                        <option value="1" {% if form.TransactStatusID.value == '1' %} selected {% endif %}>Đã giao</option>
+                                    </select>
+                                </div>
+                                {{ form.TransactStatusID.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group row">
+                                <label for="donhang-diachi" class="col-md-3 col-form-label">Địa Chỉ</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="donhang-diachi" name="DiaChi" value="{{ form.DiaChi.value }}" class="form-control">
+                                </div>
+                                {{ form.DiaChi.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn btn-default">Sửa</button>
+                                    <a href="{% url 'admincustom:index_dh'%}" class="btn btn-success">Quay lại</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "page/layout_admin.html" %}
+{% block title %}
+    Chi Tiết Thương Hiệu Sản Phẩm
+{% endblock %}
+{% block content %}
+<div class="card bg-white">
+    <div class="card-header">
+        <div class="text-center">
+            <strong class="text-uppercase text-danger text-center">Chi Tiết Thương Hiệu Sản Phẩm</strong>
+        </div>
+    </div>
+    <div class="card-body p-3 bg-white">
+        <div class="card-body p-3 bg-white">
+            <table class="table">
+                <tr>
+                    <th>
+                        Mã Thương Hiệu
+                    </th>
+                    <td>
+                        {{ thsp.MaThuongHieu }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Tên Thương Hiệu
+                    </th>
+                    <td>
+                        {{ thsp.TenThuongHieu }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Mã Danh Mục
+                    </th>
+                    <td>
+                        {{ thsp.MaDanhMuc.TenDanhMuc }}
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <button type="button" class="btn btn-info"><a href="{% url 'admincustom:SuaTHSP' MaThuongHieu=thsp.MaThuongHieu %}" style="color: white;text-decoration: none;">Sửa</a></button>
+                <button type="button" class="btn btn-success"><a href="{% url 'admincustom:index_thsp'%}" style="color: white;text-decoration: none;">Quay lại</a></button>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
